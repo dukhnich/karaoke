@@ -24,31 +24,6 @@ body {
   margin-left: auto;
 }
 
-.player-controls {
-  text-align: center;
-}
-
-.play-button {
-  width: 4rem;
-  height: 4rem;
-  border: none;
-  outline: none;
-  background-color: #a91b0d;
-  background-repeat: no-repeat;
-  background-size: 1.5rem 1.5rem;
-  background-position: center;
-  border-radius: 50%;
-  margin-bottom: 2rem;
-}
-
-.play {
-  background-image: url(./assets/play-icon.svg);
-}
-
-.pause {
-  background-image: url(./assets/pause-icon.svg);
-}
-
 .lyrics {
   overflow-y: auto;
   height: 10rem;
