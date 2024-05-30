@@ -7,6 +7,9 @@ import "./App.css";
 function App() {
   const [line, setLine] = useState(-1);
   const handleTimeUpdate = (time: number) => {
+    if (time === -1) {
+      setLine(-1);
+    }
     const index = lyricText.findIndex((l) => l.time >= time);
     setLine(index === -1 ? lyricText.length - 1 : index - 1);
   };
@@ -17,7 +20,6 @@ function App() {
       <Player
         src="fools-garden-lemon-tree.mp3"
         onChangeTime={handleTimeUpdate}
-        onEnded={() => setLine(-1)}
       />
       <Lyrics lyrics={lyricText} currentLineIndex={line} />
     </div>

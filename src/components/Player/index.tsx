@@ -4,10 +4,9 @@ import { useState, useEffect, useRef } from "react";
 interface PlayerProps {
   src: string;
   onChangeTime: (time: number) => void;
-  onEnded: () => void;
 }
 
-export const Player: React.FC<PlayerProps> = ({ src, onChangeTime, onEnded }) => {
+export const Player: React.FC<PlayerProps> = ({ src, onChangeTime }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const audioRef = useRef<HTMLAudioElement>(null!);
 
@@ -17,6 +16,11 @@ export const Player: React.FC<PlayerProps> = ({ src, onChangeTime, onEnded }) =>
 
   const handlePlay = () => {
     setIsPlaying(!isPlaying);
+  };
+  const handleEnding = () => {
+    setIsPlaying(false);
+    onChangeTime(-1);
+
   };
   const stateHandler = (ev: React.ChangeEvent<HTMLAudioElement>) => {
     const target = ev.target;
@@ -31,7 +35,7 @@ export const Player: React.FC<PlayerProps> = ({ src, onChangeTime, onEnded }) =>
         src={src}
         ref={audioRef}
         onTimeUpdate={stateHandler}
-        onEnded={onEnded}
+        onEnded={handleEnding}
       ></audio>
       <div className="player-controls">
         <button
